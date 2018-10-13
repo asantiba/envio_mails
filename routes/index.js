@@ -6,11 +6,10 @@ var usuarioModel =  require('../models/usuario');
 
 //Direccion origen para enviar mail
 var transporter = nodemailer.createTransport('SMTP',{
-    service: 'Gmail',
     auth: {
         //Este es el correo que utilizan para enviar mensajes y su contraseña, este correo lo cree yo
-        user: 'decidecorrectly@gmail.com',
-        pass: 'decidecorrectlyadsw'
+        user: 'no-reply@gojump.cl',
+        pass: 'belitajump'
     }
 });
 
@@ -50,4 +49,23 @@ module.exports = function(app,res){
             sleep(3000);
         }
     });
+    app.get('/enviar_especifico',function(req, res) {
+            var mailOptions = {
+                from: 'no-reply@gojump.cl',
+                to: "benja_as@hotmail.com",
+                subject: 'Mail masivo jump',
+                text: 'Hola, te han invitado a un correo de prueba'
+            };
+            transporter.sendMail(mailOptions, function(error, info){
+                if(error){
+                    console.log(error);
+                    res.send("mala,\n %s",error.toString());
+                }
+                else{
+                    console.log('Email enviado a'+correos[i]);
+                    res.send("wena\n");
+                }
+            });
+    });
+
 };
