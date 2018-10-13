@@ -10,7 +10,7 @@ var usuarioModel = {};
 //obtenemos los correos de los usuarios
 usuarioModel.get_mails = function(callback){
     if (connection){
-        connection.query('SELECT correo FROM Usuarios',function(error, result){
+        connection.query('SELECT DISTINCT correo FROM jumper WHERE correo LIKE "%@%"',function(error, result){
             if(error){
                 throw error;
             }
