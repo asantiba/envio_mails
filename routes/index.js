@@ -10,8 +10,8 @@ var transporter = nodemailer.createTransport({
     port: 465,
     auth: {
         //Este es el correo que utilizan para enviar mensajes y su contraseña, este correo lo cree yo
-        user: 'no-reply@gojump.cl',
-        pass: 'belitajump'
+        user: '_mainaccount@gojump.cl',
+        pass: '13551355'
     }
 });
 
