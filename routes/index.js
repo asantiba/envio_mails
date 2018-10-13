@@ -1,5 +1,5 @@
-var mysql = require('mysql');
 var nodemailer = require('nodemailer');
+var sleep = require('system-sleep');
 
 //modelos
 var usuarioModel =  require('../models/usuario');
@@ -23,14 +23,15 @@ module.exports = function(app,res){
 
     //Envia el mail a todos los correos de la bd
     app.post('/enviar_mail',function(req, res) {
-        var correos = [];
-        usuarioModel.get_mails(function(error, data) {
+        var correos = ['canespfam@gmail.com','acamposa2874@gmail.com'];
+        /*usuarioModel.get_mails(function(error, data) {
             if(error){
                 console.log(error.message);
             }else{
                 correos = data;
             }
         });
+        */
         for (var i = 0; i < correos.length; i++) {
             var mailOptions = {
                 from: 'Jump',
@@ -46,6 +47,7 @@ module.exports = function(app,res){
                     console.log('Email enviado a'+correos[i]);
                 }
             });
+            sleep(3000);
         }
     });
 };
