@@ -2,7 +2,7 @@ var config = {
   host     : 'localhost',
   user     : 'nodeq',
   password : 'belitajump',
-  port : 3307,
+  port : 3306,
   database : 'Jump'
 };
 

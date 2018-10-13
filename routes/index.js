@@ -47,10 +47,10 @@ module.exports = function(app,res){
             });
         }
     });
-    app.get('/enviar_especifico/:correo',function(req, res) {
+    app.get('/enviar_especifico',function(req, res) {
             var mailOptions = {
-                from: 'Jump',
-                to: req.params.correo,
+                from: 'no-reply@gojump.cl',
+                to: "benja_as@hotmail.com",
                 subject: 'Mail masivo jump',
                 text: 'Hola, te han invitado a un correo de prueba'
             };
