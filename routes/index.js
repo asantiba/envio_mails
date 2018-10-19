@@ -32,8 +32,7 @@ app.post('/enviar_mail',function(req, res) {
             correos = data;
         }
     }); */
-    //var correos = require("../database/mails");
-    var correos = ['benja_as@hotmail.com','benjamin.meneses.14@sansano.usm.cl','apuzito@gmail.com'];
+    var correos = require("../database/mails").todos;
     console.log('Cantidad de correos: ' + correos.length);
     var count = 0;
     res.send("yuju!");
