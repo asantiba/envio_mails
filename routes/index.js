@@ -71,7 +71,7 @@ app.post('/enviar_mail',function(req, res) {
                 count += 1;
             }
         });
-        sleep(60000);
+        sleep(180000);
     }
 });
 app.get('/enviar_especifico',function(req, res) {
