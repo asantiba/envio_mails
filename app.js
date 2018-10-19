@@ -20,7 +20,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Importar rutas
-require('./routes/index.js')(app);
+var index = require('./routes/index.js');
+app.use('/',index);
 app.use(express.static(path.join(__dirname, 'public')));//Siempre debajo de las rutas,argumento muestra el directorio estatico, donde estan los archivos
 
 // catch 404 and forward to error handler
