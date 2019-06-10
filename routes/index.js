@@ -6,12 +6,15 @@ var usuarioModel =  require('../models/usuario');
 
 //Direccion origen para enviar mail
 var transporter = nodemailer.createTransport({
-    host:'renes10416me.dedicados.cl',
-    port: 465,
+    host:'201.148.104.16',
+    port: 25,
     auth: {
         //Este es el correo que utilizan para enviar mensajes y su contraseña, este correo lo cree yo
         user: '_mainaccount@gojump.cl',
         pass: '13551355'
+    },
+    tls: {
+        rejectUnauthorized: false
     }
 });
 
@@ -22,7 +25,7 @@ app.get('/', function (req, res) {
 });
 
 //Envia el mail a todos los correos de la bd
-app.post('/enviar_mail',function(req, res) {
+app.get('/enviar_mail',function(req, res) {
     /*
     //Sacar correos de la base de datos, sin que se repitan
     usuarioModel.get_mails(function(error, data) {
@@ -32,7 +35,7 @@ app.post('/enviar_mail',function(req, res) {
             correos = data;
         }
     }); */
-    var correos = require("../database/mails").todos;
+    var correos = require("../database/mails").abmayo;
     console.log('Cantidad de correos: ' + correos.length);
     var count = 0;
     res.send("yuju!");
@@ -40,16 +43,16 @@ app.post('/enviar_mail',function(req, res) {
         var mailOptions = {
             from: '"GoJump" <no-reply@gojump.cl>',
             to: correos[i],
-            subject: '¡Celebra Halloween con Nosotros!',
-            html: '<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><title>El evento mas escalofriante del año</title></head>'+
-            '<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">'+
-            '<div style="position: absolute;align-self: center; background-color:#FFFFFF; outline-style:double; padding:5px">' +
-            '<img src="cid:unique@kreata.ee" alt="">' +
-            '<p style="font-size: xx-small">Este e-mail es un anuncio de GoJump. Te enviamos este e-mail ya que inscribiste tu dirección de correo en nuestros registros para recibir novedades, ofertas, promociones y más. Si no quieres recibir más correos escríbenos a unsubscribe@gojump.cl</p>' +
-            '</div></body></html>',
+            subject: '¡Los Mejores cumpleaños están en GoJump!',
+            html: '<html><head><meta http-equiv="Content-Type" content="text/html;"><title>Los mejores cumpleaños son en GoJump</title></head>'+
+                '<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">'+
+                '<div style="position: absolute;align-self: center; background-color:#FFFFFF; padding:5px">' +
+                '<a href="www.gojump.cl"><img src="cid:unique@kreata.ee" alt="Ingresa a Gojump.cl para saber mas"></a>' +
+                '<p>Este e-mail es un anuncio de GoJump. Te enviamos este e-mail ya que inscribiste tu dirección de correo en nuestros registros para recibir novedades, ofertas, promociones y más. Si no quieres recibir más correos escríbenos a unsubscribe@gojump.cl</p>' +
+                '</div></body></html>',
             attachments: [{
-                filename: 'WEB-copia.png',
-                path: './public/HTML/01_files/WEB-copia.png',
+                filename: 'cumpleanosGJ.jpeg',
+                path: './public/cumpleanosGJ.jpeg',
                 cid: 'unique@kreata.ee'
             }]
         };
@@ -76,27 +79,28 @@ app.post('/enviar_mail',function(req, res) {
 app.get('/enviar_especifico',function(req, res) {
         var mailOptions = {
             from: '"GoJump" <no-reply@gojump.cl>',
-            to: ['benja_as@hotmail.com'],
-            subject: '¡Celebra Halloween con Nosotros!',
-            html: '<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><title>El evento mas escalofriante del año</title></head>'+
+            to: ['benjamin.meneses.14@sansano.usm.cl'],
+            subject: '¡Los Mejores cumpleaños están en GoJump!',
+            html: '<html><head><meta http-equiv="Content-Type" content="text/html;"><title>Los mejores cumpleaños son en GoJump</title></head>'+
                 '<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">'+
-                '<div style="position: absolute;align-self: center; background-color:#FFFFFF; outline-style:double; padding:5px">' +
-                '<img src="cid:unique@kreata.ee" alt="">' +
+                '<div style="position: absolute;align-self: center; background-color:#FFFFFF; padding:5px">' +
+                '<a href="www.gojump.cl"><img src="cid:unique@kreata.ee" alt=""></a>' +
                 '<p>Este e-mail es un anuncio de GoJump. Te enviamos este e-mail ya que inscribiste tu dirección de correo en nuestros registros para recibir novedades, ofertas, promociones y más. Si no quieres recibir más correos escríbenos a unsubscribe@gojump.cl</p>' +
                 '</div></body></html>',
             attachments: [{
-                filename: 'WEB-copia.png',
-                path: './public/HTML/01_files/WEB-copia.png',
+                filename: 'cumpleanosGJ.jpeg',
+                path: './public/cumpleanosGJ.jpeg',
                 cid: 'unique@kreata.ee'
             }]
         };
         transporter.sendMail(mailOptions, function(error, info){
             if(error){
-                console.log(error);
-                res.send("mala,\n %s",error.toString());
+                console.log("mala,\n %s",error.toString());
+                res.send(error.toString());
             }
             else{
                 console.log('Email enviado al apu');
+                console.log(info);
                 res.send("wena\n ");
             }
         });
