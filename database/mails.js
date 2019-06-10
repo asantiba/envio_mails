@@ -296,6 +296,8 @@ var lista = {
 ,'jdiazcarvajal2@hotmail.com'
 ,'angali@vtr.net'],
     abmayo: [
+'luis.cortes@gojump.cl',
+'benjamin.meneses.14@sansano.usm.cl',
 'm.compagna@gmail.com',
 'h3aray@gmail.com',
 'susan_ramirez@hotmail.com',
@@ -702,7 +704,10 @@ var lista = {
 'fram.marambio29@gmail.com',
 'leonsacks84@gmail.com',
 'pamevargas@hotmail.com'],
-    junjulio: ['19claudio87@gmail.com'
+    junjulio: [
+        'luis.cortes@gojump.cl',
+        'benjamin.meneses.14@sansano.usm.cl',
+        '19claudio87@gmail.com'
 ,'abitran@hebereo.cl'
 ,'adominguez@nialem.cl'
 ,'adricerra74@hotmail.com'
@@ -1438,8 +1443,11 @@ var lista = {
 ,'yrosemvlatt@gmail.com'
 ,'yuyi@live.cl'
 ,'zaidany.reyes@gmail.com'
-,'zarelasante@hotmail.com'
-]
+,'zarelasante@hotmail.com',
+'luis.cortes@gojump.cl',
+'benjamin.meneses.14@sansano.usm.cl'
+
+    ]
 };
 
 module.exports = lista;
