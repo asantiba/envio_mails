@@ -26,16 +26,7 @@ app.get('/', function (req, res) {
 
 //Envia el mail a todos los correos de la bd
 app.get('/enviar_mail',function(req, res) {
-    /*
-    //Sacar correos de la base de datos, sin que se repitan
-    usuarioModel.get_mails(function(error, data) {
-        if(error){
-            console.log(error.message);
-        }else{
-            correos = data;
-        }
-    }); */
-    var correos = require("../database/mails").abmayo;
+    var correos = require("../database/mails").junjulio;
     console.log('Cantidad de correos: ' + correos.length);
     var count = 0;
     res.send("yuju!");
