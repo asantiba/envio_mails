@@ -26,7 +26,7 @@ app.get('/', function (req, res) {
 
 //Envia el mail a todos los correos de la bd
 app.get('/enviar_mail',function(req, res) {
-    var correos = require("../database/mails").junjulio;
+    var correos = require("../database/mails").oct;
     console.log('Cantidad de correos: ' + correos.length);
     var count = 0;
     res.send("yuju!");

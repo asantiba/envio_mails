@@ -8,9 +8,9 @@ var connection = mysql.createConnection(config);
 var usuarioModel = {};
 
 //obtenemos los correos de los usuarios
-usuarioModel.get_mails = function(callback){
+usuarioModel.get_mails = function(val, callback){
     if (connection){
-        connection.query('SELECT DISTINCT correo FROM jumper WHERE correo LIKE "%@%"',function(error, result){
+        connection.query('SELECT DISTINCT correo FROM jumper WHERE MONTH(fnac) = ?', val, function(error, result){
             if(error){
                 throw error;
             }
